@@ -8,38 +8,38 @@
   "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
   "sistema": "Windows-11-10.0.26300-SP0",
   "intervalo_troca_python_s": 9.999999999999999e-05,
-  "data": "2026-11-06T21:24:06.110111-03:00",
+  "data": "2026-11-06T22:21:05.168909-03:00",
   "resultados": [
     {
-      "produzidas": 19722,
-      "consumidas": 20000,
-      "unicas": 16691,
-      "perdidas": 3309,
-      "nao_produzidas": 278,
-      "produzidas_nao_recebidas": 3031,
-      "duplicadas": 3309,
+      "produzidas": 20000,
+      "consumidas": 17909,
+      "unicas": 16161,
+      "perdidas": 3839,
+      "nao_produzidas": 0,
+      "produzidas_nao_recebidas": 3839,
+      "duplicadas": 1748,
       "invalidas": 0,
-      "fora_de_ordem": 1078,
-      "travou": false,
-      "duracao_s": 0.223741,
+      "fora_de_ordem": 704,
+      "travou": true,
+      "duracao_s": 1.291288,
       "estados": {
-        "produtor": "espera ocupada por espaco",
-        "consumidor": "concluido"
+        "produtor": "concluido",
+        "consumidor": "espera ocupada por amostra"
       },
       "execucao": 1
     },
     {
       "produzidas": 20000,
-      "consumidas": 19041,
-      "unicas": 16578,
-      "perdidas": 3422,
+      "consumidas": 19305,
+      "unicas": 16891,
+      "perdidas": 3109,
       "nao_produzidas": 0,
-      "produzidas_nao_recebidas": 3422,
-      "duplicadas": 2463,
+      "produzidas_nao_recebidas": 3109,
+      "duplicadas": 2414,
       "invalidas": 0,
-      "fora_de_ordem": 930,
+      "fora_de_ordem": 821,
       "travou": true,
-      "duracao_s": 1.230795,
+      "duracao_s": 1.308325,
       "estados": {
         "produtor": "concluido",
         "consumidor": "espera ocupada por amostra"
@@ -47,20 +47,20 @@
       "execucao": 2
     },
     {
-      "produzidas": 20000,
-      "consumidas": 19485,
-      "unicas": 17254,
-      "perdidas": 2746,
-      "nao_produzidas": 0,
-      "produzidas_nao_recebidas": 2746,
-      "duplicadas": 2231,
+      "produzidas": 18362,
+      "consumidas": 20000,
+      "unicas": 16313,
+      "perdidas": 3687,
+      "nao_produzidas": 1638,
+      "produzidas_nao_recebidas": 2049,
+      "duplicadas": 3687,
       "invalidas": 0,
-      "fora_de_ordem": 803,
-      "travou": true,
-      "duracao_s": 1.23635,
+      "fora_de_ordem": 1170,
+      "travou": false,
+      "duracao_s": 0.312464,
       "estados": {
-        "produtor": "concluido",
-        "consumidor": "espera ocupada por amostra"
+        "produtor": "espera ocupada por espaco",
+        "consumidor": "concluido"
       },
       "execucao": 3
     }

@@ -8,7 +8,7 @@
   "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
   "sistema": "Windows-11-10.0.26300-SP0",
   "intervalo_troca_python_s": 9.999999999999999e-05,
-  "data": "2026-11-06T21:24:26.423219-03:00",
+  "data": "2026-11-06T22:22:14.795481-03:00",
   "resultados": [
     {
       "produzidas": 20000,
@@ -21,7 +21,7 @@
       "invalidas": 0,
       "fora_de_ordem": 0,
       "travou": false,
-      "duracao_s": 0.143271,
+      "duracao_s": 0.237098,
       "estados": {
         "produtor": "concluido",
         "consumidor": "concluido"
@@ -39,7 +39,7 @@
       "invalidas": 0,
       "fora_de_ordem": 0,
       "travou": false,
-      "duracao_s": 0.143787,
+      "duracao_s": 0.223158,
       "estados": {
         "produtor": "concluido",
         "consumidor": "concluido"
@@ -57,7 +57,7 @@
       "invalidas": 0,
       "fora_de_ordem": 0,
       "travou": false,
-      "duracao_s": 0.133395,
+      "duracao_s": 0.224537,
       "estados": {
         "produtor": "concluido",
         "consumidor": "concluido"

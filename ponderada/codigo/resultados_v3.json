@@ -8,7 +8,7 @@
   "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
   "sistema": "Windows-11-10.0.26300-SP0",
   "intervalo_troca_python_s": 9.999999999999999e-05,
-  "data": "2026-11-06T21:24:31.051593-03:00",
+  "data": "2026-11-06T22:22:44.490759-03:00",
   "resultados": [
     {
       "produzidas": 6,
@@ -21,7 +21,7 @@
       "invalidas": 0,
       "fora_de_ordem": 0,
       "travou": true,
-      "duracao_s": 1.07665,
+      "duracao_s": 1.074394,
       "estados": {
         "produtor": "aguardando vazio (mutex retido)",
         "consumidor": "aguardando mutex (item reservado)"
@@ -39,7 +39,7 @@
       "invalidas": 0,
       "fora_de_ordem": 0,
       "travou": true,
-      "duracao_s": 1.074636,
+      "duracao_s": 1.073006,
       "estados": {
         "produtor": "aguardando vazio (mutex retido)",
         "consumidor": "aguardando mutex (item reservado)"
@@ -57,7 +57,7 @@
       "invalidas": 0,
       "fora_de_ordem": 0,
       "travou": true,
-      "duracao_s": 1.078851,
+      "duracao_s": 1.069123,
       "estados": {
         "produtor": "aguardando vazio (mutex retido)",
         "consumidor": "aguardando mutex (item reservado)"
