@@ -1,0 +1,68 @@
+{
+  "nome": "Marcus Felipe dos Santos Valente",
+  "D1": 6,
+  "D2": 8,
+  "N": 6,
+  "total": 20000,
+  "versao": 3,
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "sistema": "Windows-11-10.0.26300-SP0",
+  "intervalo_troca_python_s": 9.999999999999999e-05,
+  "data": "2026-11-06T21:24:31.051593-03:00",
+  "resultados": [
+    {
+      "produzidas": 6,
+      "consumidas": 0,
+      "unicas": 0,
+      "perdidas": 20000,
+      "nao_produzidas": 19994,
+      "produzidas_nao_recebidas": 6,
+      "duplicadas": 0,
+      "invalidas": 0,
+      "fora_de_ordem": 0,
+      "travou": true,
+      "duracao_s": 1.07665,
+      "estados": {
+        "produtor": "aguardando vazio (mutex retido)",
+        "consumidor": "aguardando mutex (item reservado)"
+      },
+      "execucao": 1
+    },
+    {
+      "produzidas": 6,
+      "consumidas": 0,
+      "unicas": 0,
+      "perdidas": 20000,
+      "nao_produzidas": 19994,
+      "produzidas_nao_recebidas": 6,
+      "duplicadas": 0,
+      "invalidas": 0,
+      "fora_de_ordem": 0,
+      "travou": true,
+      "duracao_s": 1.074636,
+      "estados": {
+        "produtor": "aguardando vazio (mutex retido)",
+        "consumidor": "aguardando mutex (item reservado)"
+      },
+      "execucao": 2
+    },
+    {
+      "produzidas": 6,
+      "consumidas": 0,
+      "unicas": 0,
+      "perdidas": 20000,
+      "nao_produzidas": 19994,
+      "produzidas_nao_recebidas": 6,
+      "duplicadas": 0,
+      "invalidas": 0,
+      "fora_de_ordem": 0,
+      "travou": true,
+      "duracao_s": 1.078851,
+      "estados": {
+        "produtor": "aguardando vazio (mutex retido)",
+        "consumidor": "aguardando mutex (item reservado)"
+      },
+      "execucao": 3
+    }
+  ]
+}

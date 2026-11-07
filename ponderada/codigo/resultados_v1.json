@@ -1,0 +1,68 @@
+{
+  "nome": "Marcus Felipe dos Santos Valente",
+  "D1": 6,
+  "D2": 8,
+  "N": 6,
+  "total": 20000,
+  "versao": 1,
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "sistema": "Windows-11-10.0.26300-SP0",
+  "intervalo_troca_python_s": 9.999999999999999e-05,
+  "data": "2026-11-06T21:24:06.110111-03:00",
+  "resultados": [
+    {
+      "produzidas": 19722,
+      "consumidas": 20000,
+      "unicas": 16691,
+      "perdidas": 3309,
+      "nao_produzidas": 278,
+      "produzidas_nao_recebidas": 3031,
+      "duplicadas": 3309,
+      "invalidas": 0,
+      "fora_de_ordem": 1078,
+      "travou": false,
+      "duracao_s": 0.223741,
+      "estados": {
+        "produtor": "espera ocupada por espaco",
+        "consumidor": "concluido"
+      },
+      "execucao": 1
+    },
+    {
+      "produzidas": 20000,
+      "consumidas": 19041,
+      "unicas": 16578,
+      "perdidas": 3422,
+      "nao_produzidas": 0,
+      "produzidas_nao_recebidas": 3422,
+      "duplicadas": 2463,
+      "invalidas": 0,
+      "fora_de_ordem": 930,
+      "travou": true,
+      "duracao_s": 1.230795,
+      "estados": {
+        "produtor": "concluido",
+        "consumidor": "espera ocupada por amostra"
+      },
+      "execucao": 2
+    },
+    {
+      "produzidas": 20000,
+      "consumidas": 19485,
+      "unicas": 17254,
+      "perdidas": 2746,
+      "nao_produzidas": 0,
+      "produzidas_nao_recebidas": 2746,
+      "duplicadas": 2231,
+      "invalidas": 0,
+      "fora_de_ordem": 803,
+      "travou": true,
+      "duracao_s": 1.23635,
+      "estados": {
+        "produtor": "concluido",
+        "consumidor": "espera ocupada por amostra"
+      },
+      "execucao": 3
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+A4 — Marcus Felipe dos Santos Valente — D1=6 D2=8 N=6
+Versão 2
+exec produzidas consumidas perdidas duplicadas travou duracao_s
+   1      20000      20000        0          0    nao 0.143271
+   2      20000      20000        0          0    nao 0.143787
+   3      20000      20000        0          0    nao 0.133395
