@@ -1,6 +1,6 @@
 # Marcus Felipe dos Santos Valente
 
-Análise técnica e decisão de produção da pulseira sensorial Tato — ponderada de Computação CC08.
+Análise técnica e decisão de produção da pulseira sensorial Tato (ponderada de Computação CC08).
 
 O trabalho está em [ponderada/ponderada-tato.md](ponderada/ponderada-tato.md).
 Parâmetros: **D1 = 6, D2 = 8, N = 6**.

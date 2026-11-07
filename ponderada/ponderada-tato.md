@@ -2,7 +2,7 @@ Marcus Felipe dos Santos Valente | D1 = 6 | D2 = 8 | N = 6
 
 # Tato: do pipeline à decisão de produção
 
-## Parte A — O problema técnico
+## Parte A: o problema técnico
 
 ### Parâmetros individuais
 
@@ -20,7 +20,7 @@ Prazo por amostra = 5 ms
 
 O período de 10 ms informa a frequência das leituras. Ele não autoriza processar uma amostra em 10 ms: o prazo exigido continua sendo 5 ms.
 
-### A1 — Arquitetura e memória
+### A1: arquitetura e memória
 
 #### 1. Plataforma H
 
@@ -35,7 +35,7 @@ T_H = IC × CPI / f
 Excesso sobre o prazo = 8,125 − 5 = 3,125 ms
 ```
 
-A H sem acelerador **não atende**. Embora termine antes da próxima amostra, viola o prazo de resposta de 5 ms.
+A H sem acelerador não atende: termina antes da próxima amostra, mas viola o prazo de 5 ms.
 
 #### 2. Plataforma V
 
@@ -62,9 +62,9 @@ T_V com atraso máximo do SO = 2,244667 + 3
 Excesso sobre o prazo = 0,244667 ms
 ```
 
-O processamento médio calculado fica abaixo de 5 ms, mas **a V não atende ao limite com o atraso máximo de SO previsto no exercício**. O clock maior não elimina as paradas da memória nem as interrupções da tarefa pelo Linux.
+O processamento médio calculado fica abaixo de 5 ms, mas a V não atende ao limite com o atraso máximo de SO do exercício. O clock maior não elimina as paradas da memória nem as interrupções do Linux.
 
-Há duas distinções no modelo. Primeiro, se os 120 ciclos fossem o custo total de uma falta, o AMAT seria `0,94 × 1 + 0,06 × 120 = 8,14 ciclos`; essa leitura não é a convenção de penalidade usada acima. Segundo, uma taxa média de faltas produz uma estimativa média de processamento. Somar 3 ms a ela é o cenário solicitado, não uma prova de WCET absoluto: um limite real também precisaria limitar as faltas, interferências e acessos a dispositivos. Mesmo nessa estimativa, a V já ultrapassa 5 ms.
+Se os 120 ciclos fossem o custo total de uma falta, o AMAT seria `0,94 × 1 + 0,06 × 120 = 8,14 ciclos`, mas usei a convenção de penalidade adicional pedida no enunciado. Como a taxa de faltas é média, o resultado é uma estimativa e não um WCET: um limite real exigiria limitar também as faltas, as interferências e os acessos a dispositivos. Mesmo assim, a V já passa de 5 ms.
 
 #### 3. H com DSP: Lei de Amdahl
 
@@ -86,7 +86,7 @@ Novo total = 0,975 + 3,250 = 4,225 ms
 Margem = 5 − 4,225 = 0,775 ms = 15,5% do prazo
 ```
 
-A H com DSP **atende no modelo fornecido**. O ganho global é de aproximadamente 1,92 vez, pois o DSP não acelera os 40% restantes. A margem de 0,775 ms precisa acomodar custos adicionais que não estejam incluídos no IC e no CPI, como transferência para o DSP e acionamento do motor.
+A H com DSP atende no modelo fornecido. O ganho global é de cerca de 1,92 vez, porque o DSP não acelera os 40% restantes. A margem de 0,775 ms precisa acomodar custos adicionais que não estejam incluídos no IC e no CPI, como transferência para o DSP e acionamento do motor.
 
 | Opção | Processamento por amostra | Com atraso de SO informado | Atende a 5 ms no exercício? |
 |---|---:|---:|---|
@@ -108,9 +108,9 @@ Por isso a H especificada dispensa cache; Harvard, por si só, não garante que 
 
 Na captura da versão 2.21 utilizada, os dados aparecem no painel **Cache da aba CPU**. A tela mostra diretamente L1 Data, L1 Inst., Level 2 e Level 3.
 
-O computador usa um **Intel Core i5-1345U**, com dois núcleos de desempenho e oito de eficiência. A L1 é dividida entre dados e instruções: **dados = 2 × 48 KB + 8 × 32 KB = 352 KB**; **instruções = 2 × 32 KB + 8 × 64 KB = 576 KB**. O print também informa L2 de `2 × 1,25 MB + 2 × 2 MB = 6,5 MB` e L3 de 12 MB. Essa separação da L1 é uma característica de **Harvard modificada na microarquitetura**, permitindo atender buscas de instruções e dados por caches distintas. Entretanto, programas e dados pertencem ao mesmo espaço de memória da arquitetura x86-64: na visão do programador, a máquina segue o modelo **Von Neumann**. L1 separada não transforma o computador inteiro em Harvard puro.
+O computador usa um **Intel Core i5-1345U**, com dois núcleos de desempenho e oito de eficiência. A L1 é dividida entre dados e instruções: **dados = 2 × 48 KB + 8 × 32 KB = 352 KB**; **instruções = 2 × 32 KB + 8 × 64 KB = 576 KB**. O print também informa L2 de `2 × 1,25 MB + 2 × 2 MB = 6,5 MB` e L3 de 12 MB. Essa separação da L1 é uma característica de Harvard modificada na microarquitetura: buscas de instruções e de dados passam por caches distintas. Porém, programas e dados ocupam o mesmo espaço de memória da arquitetura x86-64, e para o programador a máquina segue o modelo Von Neumann. Uma L1 separada não torna o computador Harvard puro.
 
-### A2 — Pipeline: o loop do filtro
+### A2: pipeline e o loop do filtro
 
 Identifico as instruções pela numeração original:
 
@@ -213,7 +213,7 @@ Economia frente à ordem original com forwarding = 13 − 11 = 2 ciclos
 
 Há uma instrução independente entre cada load e seu consumidor. Os loads preservam seus endereços, a ordem das operações de memória continua load/load/store, e a soma continua sendo `soma + nova − antiga`. Portanto, a mudança preserva o resultado e os ponteiros finais para as amostras em memória consideradas no exercício.
 
-### A3 — Processos e threads
+### A3: processos e threads
 
 #### 1. Organização proposta para a V
 
@@ -246,13 +246,13 @@ stateDiagram-v2
 
 Embora o desenho seja o modelo clássico de estados de processo, no Linux o escalonamento se aplica às threads. A thread do sensor passa a maior parte do tempo **bloqueada**, aguardando a leitura ficar disponível ou um temporizador periódico absoluto liberar a próxima aquisição a cada 10 ms. Durante essa espera não usa CPU com polling contínuo. Ao ocorrer o evento, passa a pronta e só então a executando quando escalonada. Essa predominância da espera pressupõe uma leitura curta em relação ao período; o tempo exato do sensor não foi fornecido.
 
-### A4 — Buffer circular e semáforos
+### A4: buffer circular e semáforos
 
 #### Código e protocolo de execução
 
 Código em [codigo/experimento.py](codigo/experimento.py), com os pontos de entrada [versao1.py](codigo/versao1.py), [versao2.py](codigo/versao2.py) e [versao3.py](codigo/versao3.py). Cada comando do README executa três ensaios independentes com `N = 6` e meta de IDs `0…19.999`.
 
-Os ensaios foram executados em **06/11/2026**, Windows 11, CPython 3.14.7. O intervalo de troca do interpretador foi configurado para 0,1 ms nas três versões. A espera da versão 1 continua sendo ocupada; `time.sleep(0)` fica entre a leitura e a escrita de cada atualização do contador. Esse yield expõe a corrida mesmo com o GIL: a atualização inteira não é atômica. O comportamento do yield e dos semáforos é documentado pelo Python em [time.sleep](https://docs.python.org/3/library/time.html#time.sleep) e [threading.Semaphore](https://docs.python.org/3/library/threading.html#semaphore-objects).
+Os ensaios foram executados em **06/11/2026**, Windows 11, CPython 3.14.7. O intervalo de troca do interpretador foi configurado para 0,1 ms nas três versões, só para expor a corrida com mais frequência; ele não altera a lógica de nenhuma versão. A espera da versão 1 continua sendo ocupada; `time.sleep(0)` fica entre a leitura e a escrita de cada atualização do contador. Esse yield expõe a corrida mesmo com o GIL: a atualização inteira não é atômica. O comportamento do yield e dos semáforos é documentado pelo Python em [time.sleep](https://docs.python.org/3/library/time.html#time.sleep) e [threading.Semaphore](https://docs.python.org/3/library/threading.html#semaphore-objects).
 
 O produtor e o consumidor começam na mesma ordem nas três versões, mas a intercalação depende do SO. A geração é acelerada, sem pausa de 10 ms, para exercitar concorrência e saturação do buffer. As durações do ensaio não são medidas de latência de uma amostra nem demonstram o atendimento aos 5 ms no produto.
 
@@ -262,25 +262,25 @@ O produtor e o consumidor começam na mesma ordem nas três versões, mas a inte
 
 | Versão | Execução | Produzidas | Consumidas | Perdidas | Duplicadas | Travou? |
 |---|---:|---:|---:|---:|---:|---|
-| 1 — sem sincronização | 1 | 19.722 | 20.000 | 3.309 | 3.309 | Não |
-| 1 — sem sincronização | 2 | 20.000 | 19.041 | 3.422 | 2.463 | Sim |
-| 1 — sem sincronização | 3 | 20.000 | 19.485 | 2.746 | 2.231 | Sim |
-| 2 — semáforos | 1 | 20.000 | 20.000 | 0 | 0 | Não |
-| 2 — semáforos | 2 | 20.000 | 20.000 | 0 | 0 | Não |
-| 2 — semáforos | 3 | 20.000 | 20.000 | 0 | 0 | Não |
-| 3 — ordem trocada | 1 | 6 | 0 | 20.000 | 0 | Sim |
-| 3 — ordem trocada | 2 | 6 | 0 | 20.000 | 0 | Sim |
-| 3 — ordem trocada | 3 | 6 | 0 | 20.000 | 0 | Sim |
+| 1 (sem sincronização) | 1 | 20.000 | 17.909 | 3.839 | 1.748 | Sim |
+| 1 (sem sincronização) | 2 | 20.000 | 19.305 | 3.109 | 2.414 | Sim |
+| 1 (sem sincronização) | 3 | 18.362 | 20.000 | 3.687 | 3.687 | Não |
+| 2 (semáforos) | 1 | 20.000 | 20.000 | 0 | 0 | Não |
+| 2 (semáforos) | 2 | 20.000 | 20.000 | 0 | 0 | Não |
+| 2 (semáforos) | 3 | 20.000 | 20.000 | 0 | 0 | Não |
+| 3 (ordem trocada) | 1 | 6 | 0 | 20.000 | 0 | Sim |
+| 3 (ordem trocada) | 2 | 6 | 0 | 20.000 | 0 | Sim |
+| 3 (ordem trocada) | 3 | 6 | 0 | 20.000 | 0 | Sim |
 
-Na primeira execução da versão 1, as 20.000 leituras incluíram 3.309 repetições: chegaram apenas `20.000 − 3.309 = 16.691` IDs distintos. As 3.309 perdas se dividem em `19.722 − 16.691 = 3.031` IDs produzidos não recebidos e `20.000 − 19.722 = 278` não produzidos antes do encerramento. Não travar, portanto, não significou acertar.
+Na primeira execução da versão 1, `17.909 − 1.748 = 16.161` IDs distintos chegaram ao consumidor, então `20.000 − 16.161 = 3.839` se perderam. Na segunda, `19.305 − 2.414 = 16.891` distintos e `20.000 − 16.891 = 3.109` perdas.
 
-Na segunda execução, `19.041 − 2.463 = 16.578` IDs distintos e `20.000 − 16.578 = 3.422` perdas. Na terceira, `19.485 − 2.231 = 17.254` distintos e `20.000 − 17.254 = 2.746` perdas. Não houve leituras inválidas nas nove execuções.
+A terceira execução não travou, mas também não acertou. O consumidor completou as 20.000 leituras com 3.687 repetições, então só `20.000 − 3.687 = 16.313` IDs distintos chegaram. As 3.687 perdas se dividem em `18.362 − 16.313 = 2.049` IDs produzidos e não recebidos e `20.000 − 18.362 = 1.638` que nem foram produzidos. Não houve leituras inválidas nas nove execuções.
 
-Na versão 3, cada ensaio produziu seis itens que ficaram retidos no buffer. Os outros **19.994 IDs nem chegaram a ser produzidos**. Assim, as 20.000 perdas indicam ausência de entrega dos IDs esperados, não sobrescrita de 20.000 posições. Os registros completos preservam essa distinção: [V1](codigo/resultados_v1.json), [V2](codigo/resultados_v2.json), [V3](codigo/resultados_v3.json).
+Na versão 3, cada ensaio produziu seis itens, que ficaram retidos no buffer. Os outros 19.994 IDs nem chegaram a ser produzidos. Assim, as 20.000 perdas indicam ausência de entrega dos IDs esperados, não sobrescrita de 20.000 posições. Os registros completos preservam essa distinção: [V1](codigo/resultados_v1.json), [V2](codigo/resultados_v2.json), [V3](codigo/resultados_v3.json).
 
 #### Prints das execuções
 
-Os prints mostram a visualização dos registros TXT gravados pelas execuções, sem alterar seus números.
+Os prints são capturas do terminal com o comando de cada versão e as três execuções. Os números são os mesmos dos arquivos `resultados_vN.txt`.
 
 ![Resultados das três execuções da versão 1](img/a4-versao1.png)
 
@@ -290,7 +290,7 @@ Os prints mostram a visualização dos registros TXT gravados pelas execuções,
 
 #### Região crítica da versão 1
 
-A região crítica envolve consultar a disponibilidade, acessar o slot e atualizar o estado compartilhado do buffer. O ponto mais evidente é a sequência **ler → modificar → escrever o contador `ocupadas`**, executada por ambas as threads sem exclusão mútua. Os índices de leitura e escrita têm um único escritor cada, mas dependem desse contador correto para não ler posições vazias nem sobrescrever itens pendentes.
+A região crítica envolve consultar a disponibilidade, acessar o slot e atualizar o estado compartilhado do buffer. O ponto mais evidente é a sequência ler, modificar e escrever o contador `ocupadas`, executada por ambas as threads sem exclusão mútua. Os índices de leitura e escrita têm um único escritor cada, mas dependem desse contador correto para não ler posições vazias nem sobrescrever itens pendentes.
 
 Exemplo: partindo de `ocupadas = 2`, o produtor lê 2 e é interrompido. O consumidor também lê 2 e depois escreve 1. O produtor retoma e escreve 3, sobrescrevendo a atualização do consumidor. Após uma produção e um consumo, o correto seria continuar em 2. Se a escrita do consumidor ocorrer por último, o resultado incorreto será 1. Um contador acima do real permite ler conteúdo antigo e duplicar IDs; abaixo do real permite sobrescrever itens ainda não lidos, perder IDs ou ficar esperando uma disponibilidade que foi contabilizada incorretamente.
 
@@ -313,9 +313,9 @@ Consumidor: P(cheio) → P(mutex) → lê e avança índice   → V(mutex) → V
 
 O produtor conseguiu preencher as seis posições. Na tentativa seguinte, adquiriu `mutex` e bloqueou em `P(vazio)`, pois não havia espaço. O consumidor conseguiu reservar um item com `P(cheio)`, mas bloqueou em `P(mutex)`. Para haver espaço, o consumidor precisaria retirar um item e executar `V(vazio)`; para isso, precisaria do mutex retido pelo produtor. A espera se fecha em ciclo.
 
-O monitor observou um segundo sem entrega e registrou o travamento, sem liberar artificialmente os recursos. As threads bloqueadas são daemon; sua finalização ao encerrar o programa é uma medida do ensaio, não uma solução de deadlock para a pulseira. Um segundo também seria um limite inaceitável para a segurança do produto, cujo prazo é 5 ms.
+O monitor observou um segundo sem entrega e registrou o travamento, sem liberar artificialmente os recursos. As threads bloqueadas são daemon; sua finalização ao encerrar o programa é uma medida do ensaio, não uma solução de deadlock para a pulseira. Um segundo seria inaceitável para a segurança do produto, cujo prazo é 5 ms.
 
-### A5 — Deadlock: a pulseira congelou
+### A5: deadlock e a pulseira congelada
 
 #### 1. Sequência e grafo de alocação
 
@@ -361,22 +361,20 @@ Para o usuário, isso elimina o congelamento por esse ciclo específico, mas nã
 
 **Detecção e recuperação: monitor de progresso e cancelamento cooperativo.** Registro os proprietários e as esperas para detectar ciclos, juntamente com prazos de aquisição. Ao detectar um ciclo, cancelo a operação de configuração ou envio de menor prioridade; sua própria rotina sai da espera com timeout, desfaz alterações ainda não confirmadas e libera somente os recursos que possui, na ordem inversa. A operação pode ser repetida depois de forma idempotente. Não basta matar uma thread nem chamar `V` de fora sem saber o estado dos dados: isso pode deixar transações pela metade e o dispositivo inconsistente.
 
-O usuário pode receber um aviso de configuração não aplicada ou uma lacuna no log, enquanto o controle local deve continuar prioritário. Se a recuperação exigir reiniciar o controle, haverá indisponibilidade e ela não satisfará o requisito rígido durante esse intervalo. Para H+DSP, qualquer espera e recuperação que recaia sobre a amostra precisa caber, junto com os demais custos extras, nos **0,775 ms** restantes; sem esse limite demonstrado, a detecção é uma defesa adicional e não autoriza colocar o produto em campo. A ordem global e a retirada de BLE/log do caminho crítico são a escolha principal para produção.
+O usuário pode receber um aviso de configuração não aplicada ou uma lacuna no log, enquanto o controle local deve continuar prioritário. Se a recuperação exigir reiniciar o controle, haverá indisponibilidade e ela não satisfará o requisito rígido durante esse intervalo. Para H+DSP, qualquer espera e recuperação que recaia sobre a amostra precisa caber, junto com os demais custos extras, nos **0,775 ms** restantes; sem esse limite demonstrado, a detecção é só uma defesa adicional e não autoriza colocar o produto em campo. Para produção, a escolha principal é a ordem global junto com a retirada de BLE e log do caminho crítico.
 
-## Parte B — A decisão do CTO
+## Parte B: a decisão do CTO
 
-### Memorando ao conselho da Tato — Dilema 2
+### Memorando ao conselho da Tato (dilema 2)
 
 **Decido produzir a Tato com a Plataforma H e o acelerador DSP, ao custo de R$ 37 por unidade.**
 
-A H sem DSP leva 8,125 ms e viola o prazo. Com o acelerador, o tempo cai para 4,225 ms, deixando 0,775 ms de margem. A V processa em 2,244667 ms na estimativa, mas chega a 5,244667 ms com o atraso do Linux. Portanto, a vantagem de clock e a atualização OTA não compensam uma opção que já excede o prazo no cenário fornecido. A decisão usa H+DSP como base; a liberação do produto exige confirmar o tempo completo, incluindo sensor, transferências, sincronização e acionamento.
+A H sem DSP leva 8,125 ms e viola o prazo. Com o acelerador, o tempo cai para 4,225 ms, deixando 0,775 ms de margem. A V processa em 2,244667 ms na estimativa, mas chega a 5,244667 ms com o atraso do Linux. Portanto, a vantagem de clock e a atualização OTA não compensam uma opção que já excede o prazo no cenário fornecido. Antes de liberar o produto, é preciso confirmar o tempo completo, com sensor, transferências, sincronização e acionamento.
 
-Abrimos mão da conveniência de corrigir firmware pela internet. A atualização por cabo impõe deslocamento e tempo sem o dispositivo ao usuário, além de logística e atendimento à empresa. A economia inicial é de **R$ 70 − R$ 37 = R$ 33 por pulseira**, aproximadamente 47,1% do preço da V. Essa diferença deve financiar parte da manutenção e dos testes; não pode ser tratada integralmente como margem, pois o custo de assistência ainda não foi medido.
+Abrimos mão da conveniência de corrigir firmware pela internet. A atualização por cabo impõe deslocamento e tempo sem o dispositivo ao usuário, além de logística e atendimento à empresa. A economia inicial é de **R$ 70 − R$ 37 = R$ 33 por pulseira**, aproximadamente 47,1% do preço da V. Essa diferença deve financiar parte da manutenção e dos testes. Não conto tudo como margem, porque o custo de assistência ainda não foi medido.
 
 Para quem usa a Tato, a prioridade é receber a vibração dentro do prazo mesmo sem o celular. A H reduz a complexidade de um Linux no dispositivo, mas continua exposta a falhas de firmware e às entradas recebidas por BLE. A ausência de OTA torna a correção de uma vulnerabilidade mais lenta. Exijo validação dos comandos, proteção da integridade das atualizações e comunicação acessível de recolhimento ou manutenção. Também retiro a espera por log e BLE do caminho crítico: a economia não justifica repetir o congelamento de A5.
 
 Mudarei para a V se uma revisão demonstrar, por análise de pior caso e ensaios sob interferência de memória, SO e BLE, **resposta completa de no máximo 5 ms**, e se o custo acumulado evitado de assistência por atualizações superar **R$ 33 por unidade** durante a vida útil. Até lá, assumimos explicitamente o custo de manutenção presencial para preservar o prazo do alerta local.
-
----
 
 Fonte dos parâmetros, requisitos e dilemas: [enunciado da ponderada CC08](https://docs.google.com/document/d/1oQb665Vap52bXLAJ_C_LaT3Ts0_ewt4jFQ_Rq94VmDs). Evidência de hardware obtida com o [CPU-Z oficial da CPUID](https://www.cpuid.com/softwares/cpu-z.html). Resultados experimentais nos arquivos e prints deste repositório; valores comerciais usados apenas conforme o enunciado. Consulta e execuções em 06/11/2026.
